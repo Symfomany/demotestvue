@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Main from '@/components/Main'
 
-
 /**
  * https://vuejs.org/v2/guide/unit-testing.html
  */
@@ -16,10 +15,5 @@ describe('Main.vue', () => {
     expect(vm.$el.querySelector('.main .box h4').textContent)
       .to.equal('Je suis dans la boite')
 
-  })
-
-  it('has a created hook', () => {
-    console.log(Main)
-    expect(typeof Main.created).toBe('function')
   })
 })

@@ -1,5 +1,5 @@
 <template>
-  <v-app standalone class="app">
+  <v-app standalone class="app" id="app">
     <v-toolbar  class="green" dark></v-toolbar>
     <main>
       <v-container fluid>

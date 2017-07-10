@@ -1,0 +1,17 @@
+2017-07-10T09:43:27.005416000 40.021826s notice: Recursively removing directory /Users/boyer/Desktop/test/test/rethinkdb_data/tmp
+2017-07-10T09:43:27.009276000 40.025687s notice: Initializing directory /Users/boyer/Desktop/test/test/rethinkdb_data
+2017-07-10T09:43:27.009344000 40.025751s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/boyer/Desktop/test/test/rethinkdb_data' did not already exist or is empty.)
+2017-07-10T09:43:27.009361000 40.025768s notice: Running rethinkdb 2.3.5 (CLANG 7.3.0 (clang-703.0.31))...
+2017-07-10T09:43:27.013568000 40.029976s notice: Running on Darwin 16.3.0 x86_64
+2017-07-10T09:43:27.013606000 40.030013s notice: Loading data from directory /Users/boyer/Desktop/test/test/rethinkdb_data
+2017-07-10T09:43:27.125333000 40.141740s info: Automatically using cache size of 4253 MB
+2017-07-10T09:43:37.132339000 50.149148s notice: Listening for intracluster connections on port 29015
+2017-07-10T09:43:37.136225000 50.153034s notice: Listening for client driver connections on port 28015
+2017-07-10T09:43:37.136311000 50.153119s notice: Listening for administrative HTTP connections on port 8080
+2017-07-10T09:43:47.137124000 60.154333s notice: Listening on cluster addresses: 127.0.0.1, 192.168.1.116, ::1, fe80::1%1, fe80::1477:361e:edfb:f385%4, fe80::742c:57ff:fe99:a2cb%9, fe80::e7eb:4687:dcf4:adea%10
+2017-07-10T09:43:47.161515000 60.178723s info: Table e51162e3-d97c-480b-9f0a-52f209e53a3b: Starting a new Raft election for term 1.
+2017-07-10T09:43:47.161772000 60.178980s info: Table e51162e3-d97c-480b-9f0a-52f209e53a3b: Added replica on this server.
+2017-07-10T09:43:47.188014000 60.205223s info: Table e51162e3-d97c-480b-9f0a-52f209e53a3b: This server is Raft leader for term 1. Latest log index is 0.
+2017-07-10T09:43:57.140973000 70.158581s notice: Listening on driver addresses: 127.0.0.1, 192.168.1.116, ::1, fe80::1%1, fe80::1477:361e:edfb:f385%4, fe80::742c:57ff:fe99:a2cb%9, fe80::e7eb:4687:dcf4:adea%10
+2017-07-10T09:44:07.150880000 80.168888s notice: Listening on http addresses: 127.0.0.1, 192.168.1.116, ::1, fe80::1%1, fe80::1477:361e:edfb:f385%4, fe80::742c:57ff:fe99:a2cb%9, fe80::e7eb:4687:dcf4:adea%10
+2017-07-10T09:44:07.150896000 80.168903s notice: Server ready, "MacBook_Pro_de_boyer_local_je4" 9196e881-9845-4218-9b26-6e257cedad6f
