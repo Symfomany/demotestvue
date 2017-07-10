@@ -9,22 +9,24 @@
             <v-card>
               <v-toolbar class="white--text pink" dark>
                 <v-toolbar-side-icon></v-toolbar-side-icon>
-                <v-toolbar-title>Inbox</v-toolbar-title>
+                <v-toolbar-title>Liste des tâches</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>search</v-icon>
                 </v-btn>
-                <v-btn icon>
-                  <v-icon>check_circle</v-icon>
-                </v-btn>
               </v-toolbar>
-              <v-list two-line>
-                <v-list-tile avatar ripple v-for="(item, index) in tasks" v-bind:key="item.id">
-                  <v-list-tile-content>
-                    <v-list-tile-title>{{ item.content }}</v-list-tile-title>
-                  </v-list-tile-content>
-                  <v-divider v-if="index + 1 < tasks.length"></v-divider>
+              <v-list>
+                <transition-group name="list" tag="p">
+                  <v-list-tile avatar ripple  v-for="(item, index) in tasks" :key="item.id">
+                    <v-list-tile-content>
+                      <v-list-tile-title>{{ item.content }}</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-list-tile-action>
+                    <v-btn icon ripple @click.native="remove(item.id)"><v-icon >delete</v-icon></v-btn>
+                    </v-list-tile-action>
+                    <v-divider v-if="index + 1 < tasks.length"></v-divider>
                 </v-list-tile>
+                </transition-group>
               </v-list>
             </v-card>
           </v-flex>
@@ -33,11 +35,15 @@
          <v-layout row>
           <v-flex xs12 sm6 offset-sm3>
             <v-card>
-              <v-text-field
-                name="input-7-4"
-                placeholder="Contenu de la tâche"
-                multi-line
-              ></v-text-field>
+            <form @submit.prevent="send">
+              <v-card-text>
+                <v-text-field
+                  v-model="newTask"
+                  name="input-7-4"
+                  placeholder="Contenu de la tâche"
+                ></v-text-field>
+                </v-card-text>
+            </form>
             </v-card>
           </v-flex>
         </v-layout>
@@ -50,7 +56,21 @@ export default {
   name: 'main',
   data(){
     return {
-    tasks: []
+      newTask: '',
+      tasks: []
+    }
+  },
+  methods: {
+    send(){
+      this.$http.post('http://localhost:3000/newtask', {content: this.newTask}).then(response => {
+        this.newTask = '';
+        this.tasks = response.body;
+      });
+    },
+    remove(id){
+      this.$http.get(`http://localhost:3000/remove/${id}`).then(response => {
+        this.tasks = response.body;
+      });
     }
   },
   created(){
@@ -60,3 +80,14 @@ export default {
   }
 }
 </script>
+
+
+<style>
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active for <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+</style>

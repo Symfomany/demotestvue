@@ -19,7 +19,7 @@ class Table {
      *  Get all of table
      */
     getAll() {
-        return this.table.pluck('id', 'content');
+        return this.table.pluck('id', 'content').orderBy(r.row("content").downcase())
     }
 
     /**
@@ -55,9 +55,7 @@ class Table {
      */
     addFavoris(id) {
         if (!id) throw "Un id est requis"
-        this.table.get(id).update({ "star": true }).run(connection, (err, cursor) => {
-            res.json(true)
-        });
+        return this.table.get(id).update({ "star": true });
     }
 
     /**
@@ -66,9 +64,7 @@ class Table {
      */
     removeFavoris(id) {
         if (!id) throw "Un id est requis"
-        this.table.get(id).update({ "star": false }).run(connection, (err, cursor) => {
-            res.json(true)
-        });
+        return this.table.get(id).update({ "star": false });
     }
 
 }

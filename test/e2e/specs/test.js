@@ -13,7 +13,6 @@ module.exports = {
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('.main')
       .assert.containsText('h3', 'Page principale')
-      // .assert.elementCount('img', 0)
       .end()
   }
 }

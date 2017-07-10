@@ -57,7 +57,6 @@ let connection = r.connect({
         });
     });
 
-
     app.get('/detail/:id', (req, res) => {
         let id = req.params.id;
         Task.getOne(id).run(connection, (err, one) => {
@@ -83,13 +82,21 @@ let connection = r.connect({
     app.get('/remove/:id', (req, res) => {
         let id = req.params.id;
         Task.remove(id).run(connection, (err, cursor) => {
-            res.json(true)
+            Task.getAll().run(connection, (err, cursor) => {
+                cursor.toArray((err, result) => {
+                    return res.json(result)
+                });
+            });
         });
     });
 
     app.post('/newtask', (req, res) => {
         Task.add(req.body).run(connection, (err, cursor) => {
-            res.json(true)
+            Task.getAll().run(connection, (err, cursor) => {
+                cursor.toArray((err, result) => {
+                    return res.json(result)
+                });
+            });
         });
     });
 
