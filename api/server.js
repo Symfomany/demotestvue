@@ -14,6 +14,13 @@ let cors = require('cors');
 let bodyParser = require('body-parser');
 let helmet = require('helmet');
 let path = require('path');
+let Table = require('./model/Table')
+
+/**
+ * objet table  
+ */
+let Task = new Table('tasks');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -43,22 +50,45 @@ let connection = r.connect({
 
 
     app.get('/', (req, res) => {
-        r.table('tasks').run(connection, (err, cursor) => {
+        Task.getAll().run(connection, (err, cursor) => {
             cursor.toArray((err, result) => {
                 return res.json(result)
             });
         });
     });
 
+
+    app.get('/detail/:id', (req, res) => {
+        let id = req.params.id;
+        Task.getOne(id).run(connection, (err, one) => {
+            res.json(one)
+        });
+    });
+
+
+    app.get('/star/:id', (req, res) => {
+        let id = req.params.id;
+        Task.addFavoris(id).run(connection, (err, cursor) => {
+            res.json(true)
+        });
+    });
+
+    app.get('/unstar/:id', (req, res) => {
+        let id = req.params.id;
+        Task.removeFavoris(id).run(connection, (err, cursor) => {
+            res.json(true)
+        });
+    });
+
     app.get('/remove/:id', (req, res) => {
         let id = req.params.id;
-        r.table('tasks').get(id).delete().run(connection, (err, cursor) => {
+        Task.remove(id).run(connection, (err, cursor) => {
             res.json(true)
         });
     });
 
     app.post('/newtask', (req, res) => {
-        r.table('tasks').insert(req.body).run(connection, (err, cursor) => {
+        Task.add(req.body).run(connection, (err, cursor) => {
             res.json(true)
         });
     });
