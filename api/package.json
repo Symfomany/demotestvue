@@ -1,0 +1,40 @@
+{
+  "name": "appvue",
+  "version": "1.0.0",
+  "description": "A Vue.js project",
+  "author": "Julien",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "mocha -c -G model/table.spec.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "body-parser": "^1.17.2",
+    "chai": "^4.0.2",
+    "chai-http": "^3.0.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "cross-env": "^4.0.0",
+    "cross-spawn": "^5.0.1",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "helmet": "^3.6.1",
+    "install": "^0.10.1",
+    "morgan": "^1.8.2",
+    "npm": "^5.0.3",
+    "rethinkdb": "^2.3.3"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  }
+}

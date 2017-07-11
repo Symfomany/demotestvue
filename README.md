@@ -1,6 +1,6 @@
-# test
+# Demo of E2E Tests & Unit 
 
-> A Vue.js project
+> A Vue.js project to build test & unit
 
 ## Build Setup
 
