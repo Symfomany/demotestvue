@@ -35,9 +35,10 @@
          <v-layout row>
           <v-flex xs12 sm6 offset-sm3>
             <v-card>
-            <form @submit.prevent="send">
+            <form @submit.prevent="send" id="newTask">
               <v-card-text>
                 <v-text-field
+                  id="textNewTask"
                   v-model="newTask"
                   name="input-7-4"
                   placeholder="Contenu de la tâche"
@@ -73,7 +74,7 @@ export default {
       });
     }
   },
-  created(){
+  created: function(){
     this.$http.get('http://localhost:3000/').then(response => {
       this.tasks = response.body;
     });

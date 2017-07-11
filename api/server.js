@@ -90,6 +90,23 @@ let connection = r.connect({
         });
     });
 
+
+    app.get('/removeFilter/:content', (req, res) => {
+        let content = req.params.content;
+        Task.filter({ content: content }).delete().run(connection, (err, cursor) => {
+            return res.json(true)
+        });
+    });
+
+    app.get('/filter/:content', (req, res) => {
+        let content = req.params.content;
+        Task.filter({ content: content }).run(connection, (err, cursor) => {
+            cursor.toArray((err, result) => {
+                return res.json(result)
+            });
+        });
+    });
+
     app.post('/newtask', (req, res) => {
         Task.add(req.body).run(connection, (err, cursor) => {
             Task.getAll().run(connection, (err, cursor) => {
@@ -109,7 +126,8 @@ let connection = r.connect({
 
 
 
-
 app.listen(3000, function () {
     console.log('Listened on port 3000!')
-})
+});
+
+module.exports = app;

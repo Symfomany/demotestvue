@@ -41,6 +41,15 @@ class Table {
     }
 
     /**
+     * filter tasks
+     * @param {*} id 
+     */
+    filter(obj) {
+        if (!obj || typeof obj !== 'object') throw "Un objet est requis"
+        return this.table.filter(obj);
+    }
+
+    /**
      * Insert one or several object
      * @param {*} obj 
      */
